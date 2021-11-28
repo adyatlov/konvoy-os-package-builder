@@ -1,0 +1,2 @@
+res="../download_results.txt"; tree > $res && for d in $(ls); do rm -rf /var/cache/apt/archives/* && printf "\n\n$d\n=================================\n">>$res; apt-get -d install -y ./$d/* 2>>$res 1>>$res;printf "EXIT CODE: $?\n">>$res; ls -l /var/cache/apt/archives>>$res; done;
+res="../install_results.txt"; tree > $res && for d in $(ls); do printf "\n\n$d\n=================================\n">>$res; apt-get -s install -y ./$d/* 2>>$res 1>>$res;printf "EXIT CODE: $?">>$res; done;

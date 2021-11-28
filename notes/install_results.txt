@@ -1,0 +1,228 @@
+.
+├── apt-transport-https
+│   └── apt-transport-https_1.2.35_amd64.deb
+├── chrony
+│   └── chrony_2.1.1-1ubuntu0.1_amd64.deb
+├── containerd.io=1.4.7-1
+│   └── containerd.io_1.4.7-1_amd64.deb
+├── kubeadm=1.20.11-00
+│   ├── cri-tools_1.13.0-01_amd64.deb
+│   ├── kubeadm_1.20.11-00_amd64.deb
+│   └── kubernetes-cni_0.8.7-00_amd64.deb
+├── kubectl=1.20.11-00
+│   └── kubectl_1.20.11-00_amd64.deb
+├── kubelet=1.20.11-00
+│   ├── kubelet_1.20.11-00_amd64.deb
+│   └── kubernetes-cni_0.8.7-00_amd64.deb
+├── libseccomp2
+│   └── libseccomp2_2.5.1-1ubuntu1~16.04.1_amd64.deb
+├── nfs-common
+│   └── nfs-common_1%3a1.2.8-9ubuntu12.3_amd64.deb
+├── nvidia-container-runtime
+│   ├── libnvidia-container1_1.5.1-1_amd64.deb
+│   ├── libnvidia-container-tools_1.5.1-1_amd64.deb
+│   ├── nvidia-container-runtime_3.5.0-1_amd64.deb
+│   └── nvidia-container-toolkit_1.5.1-1_amd64.deb
+├── nvme-cli
+│   └── nvme-cli_0.5-1ubuntu0.2_amd64.deb
+├── openssl
+│   └── openssl_1.0.2g-1ubuntu4.20_amd64.deb
+└── xfsprogs
+    └── xfsprogs_4.3.0+nmu1ubuntu1.1_amd64.deb
+
+12 directories, 18 files
+
+
+apt-transport-https
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  distro-info laptop-detect
+Use 'apt autoremove' to remove them.
+The following packages will be REMOVED
+  apt apt-utils tasksel tasksel-data ubuntu-advantage-tools ubuntu-minimal
+  ubuntu-server update-notifier-common
+The following NEW packages will be installed
+  apt-transport-https
+WARNING: The following essential packages will be removed.
+This should NOT be done unless you know exactly what you are doing!
+  apt
+0 to upgrade, 1 to newly install, 8 to remove and 0 not to upgrade.
+E: Essential packages were removed and -y was used without --allow-remove-essential.
+EXIT CODE: 100
+
+chrony
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies.
+ chrony : Depends: libtomcrypt0 but it is not installable
+E: Unable to correct problems, you have held broken packages.
+EXIT CODE: 100
+
+containerd.io=1.4.7-1
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed
+  containerd.io
+0 to upgrade, 1 to newly install, 0 to remove and 0 not to upgrade.
+Inst containerd.io (1.4.7-1 local-deb [amd64])
+Conf containerd.io (1.4.7-1 local-deb [amd64])
+EXIT CODE: 0
+
+kubeadm=1.20.11-00
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies.
+ kubeadm : Depends: kubelet (>= 1.13.0) but it is not installable
+           Depends: kubectl (>= 1.13.0) but it is not installable
+E: Unable to correct problems, you have held broken packages.
+EXIT CODE: 100
+
+kubectl=1.20.11-00
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed
+  kubectl
+0 to upgrade, 1 to newly install, 0 to remove and 0 not to upgrade.
+Inst kubectl (1.20.11-00 local-deb [amd64])
+Conf kubectl (1.20.11-00 local-deb [amd64])
+EXIT CODE: 0
+
+kubelet=1.20.11-00
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  conntrack socat
+The following NEW packages will be installed
+  conntrack kubelet kubernetes-cni socat
+0 to upgrade, 4 to newly install, 0 to remove and 0 not to upgrade.
+Inst conntrack (1:1.4.4+snapshot20161117-6ubuntu2 Ubuntu:18.04/bionic [amd64])
+Inst kubernetes-cni (0.8.7-00 local-deb [amd64])
+Inst socat (1.7.3.2-2ubuntu2 Ubuntu:18.04/bionic [amd64])
+Inst kubelet (1.20.11-00 local-deb [amd64])
+Conf conntrack (1:1.4.4+snapshot20161117-6ubuntu2 Ubuntu:18.04/bionic [amd64])
+Conf kubernetes-cni (0.8.7-00 local-deb [amd64])
+Conf socat (1.7.3.2-2ubuntu2 Ubuntu:18.04/bionic [amd64])
+Conf kubelet (1.20.11-00 local-deb [amd64])
+EXIT CODE: 0
+
+libseccomp2
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be DOWNGRADED:
+  libseccomp2
+0 to upgrade, 0 to newly install, 1 to downgrade, 0 to remove and 0 not to upgrade.
+E: Packages were downgraded and -y was used without --allow-downgrades.
+EXIT CODE: 100
+
+nfs-common
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies.
+ nfs-common : Depends: libevent-2.0-5 (>= 2.0.10-stable) but it is not installable
+              Depends: initscripts (>= 2.88dsf-13.10ubuntu1) but it is not installable
+              Recommends: python but it is not going to be installed
+E: Unable to correct problems, you have held broken packages.
+EXIT CODE: 100
+
+nvidia-container-runtime
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed
+  libnvidia-container-tools libnvidia-container1 nvidia-container-runtime
+  nvidia-container-toolkit
+0 to upgrade, 4 to newly install, 0 to remove and 0 not to upgrade.
+Inst libnvidia-container1 (1.5.1-1 local-deb [amd64])
+Inst libnvidia-container-tools (1.5.1-1 local-deb [amd64])
+Inst nvidia-container-toolkit (1.5.1-1 local-deb [amd64])
+Inst nvidia-container-runtime (3.5.0-1 local-deb [amd64])
+Conf libnvidia-container1 (1.5.1-1 local-deb [amd64])
+Conf libnvidia-container-tools (1.5.1-1 local-deb [amd64])
+Conf nvidia-container-toolkit (1.5.1-1 local-deb [amd64])
+Conf nvidia-container-runtime (3.5.0-1 local-deb [amd64])
+EXIT CODE: 0
+
+nvme-cli
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed
+  nvme-cli
+0 to upgrade, 1 to newly install, 0 to remove and 0 not to upgrade.
+Inst nvme-cli (0.5-1ubuntu0.2 local-deb [amd64])
+Conf nvme-cli (0.5-1ubuntu0.2 local-deb [amd64])
+EXIT CODE: 0
+
+openssl
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  eatmydata libeatmydata1 python3-blinker python3-jinja2 python3-json-pointer
+  python3-jsonpatch python3-jsonschema python3-jwt python3-markupsafe
+  python3-oauthlib
+Use 'apt autoremove' to remove them.
+Suggested packages:
+  ca-certificates
+The following packages will be REMOVED
+  apport ca-certificates cloud-init landscape-common python3-apport
+  python3-certifi python3-httplib2 python3-requests
+  python3-requests-unixsocket snapd software-properties-common ssh-import-id
+  ubuntu-release-upgrader-core ubuntu-server update-manager-core
+  update-notifier-common
+The following packages will be DOWNGRADED:
+  openssl
+0 to upgrade, 0 to newly install, 1 to downgrade, 16 to remove and 0 not to upgrade.
+E: Packages were downgraded and -y was used without --allow-downgrades.
+EXIT CODE: 100
+
+xfsprogs
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Suggested packages:
+  xfsdump attr quota
+The following packages will be DOWNGRADED:
+  xfsprogs
+0 to upgrade, 0 to newly install, 1 to downgrade, 0 to remove and 0 not to upgrade.
+E: Packages were downgraded and -y was used without --allow-downgrades.
+EXIT CODE: 100

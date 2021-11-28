@@ -1,0 +1,276 @@
+.
+├── apt-transport-https
+│   └── apt-transport-https_1.2.35_amd64.deb
+├── chrony
+│   └── chrony_2.1.1-1ubuntu0.1_amd64.deb
+├── containerd.io=1.4.7-1
+│   └── containerd.io_1.4.7-1_amd64.deb
+├── kubeadm=1.20.11-00
+│   ├── cri-tools_1.13.0-01_amd64.deb
+│   ├── kubeadm_1.20.11-00_amd64.deb
+│   └── kubernetes-cni_0.8.7-00_amd64.deb
+├── kubectl=1.20.11-00
+│   └── kubectl_1.20.11-00_amd64.deb
+├── kubelet=1.20.11-00
+│   ├── kubelet_1.20.11-00_amd64.deb
+│   └── kubernetes-cni_0.8.7-00_amd64.deb
+├── libseccomp2
+│   └── libseccomp2_2.5.1-1ubuntu1~16.04.1_amd64.deb
+├── nfs-common
+│   └── nfs-common_1%3a1.2.8-9ubuntu12.3_amd64.deb
+├── nvidia-container-runtime
+│   ├── libnvidia-container1_1.5.1-1_amd64.deb
+│   ├── libnvidia-container-tools_1.5.1-1_amd64.deb
+│   ├── nvidia-container-runtime_3.5.0-1_amd64.deb
+│   └── nvidia-container-toolkit_1.5.1-1_amd64.deb
+├── nvme-cli
+│   └── nvme-cli_0.5-1ubuntu0.2_amd64.deb
+├── openssl
+│   └── openssl_1.0.2g-1ubuntu4.20_amd64.deb
+└── xfsprogs
+    └── xfsprogs_4.3.0+nmu1ubuntu1.1_amd64.deb
+
+12 directories, 18 files
+
+
+apt-transport-https
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  distro-info laptop-detect
+Use 'apt autoremove' to remove them.
+The following packages will be REMOVED
+  apt apt-utils tasksel tasksel-data ubuntu-advantage-tools ubuntu-minimal
+  ubuntu-server update-notifier-common
+The following NEW packages will be installed
+  apt-transport-https
+0 to upgrade, 1 to newly install, 8 to remove and 0 not to upgrade.
+Need to get 0 B/26.6 kB of archives.
+After this operation, 9,046 kB disk space will be freed.
+Get:1 /root/backup_konvoy_v1.8.3_amd64_debs/apt-transport-https/apt-transport-https_1.2.35_amd64.deb apt-transport-https amd64 1.2.35 [26.6 kB]
+Download complete and in download only mode
+EXIT CODE: 0
+total 4
+-rw-r----- 1 root root    0 Nov 28 01:35 lock
+drwx------ 2 _apt root 4096 Nov 28 01:35 partial
+
+
+chrony
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies.
+ chrony : Depends: libtomcrypt0 but it is not installable
+E: Unable to correct problems, you have held broken packages.
+EXIT CODE: 100
+total 0
+
+
+containerd.io=1.4.7-1
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed
+  containerd.io
+0 to upgrade, 1 to newly install, 0 to remove and 0 not to upgrade.
+Need to get 0 B/24.5 MB of archives.
+After this operation, 113 MB of additional disk space will be used.
+Get:1 /root/backup_konvoy_v1.8.3_amd64_debs/containerd.io=1.4.7-1/containerd.io_1.4.7-1_amd64.deb containerd.io amd64 1.4.7-1 [24.5 MB]
+Download complete and in download only mode
+EXIT CODE: 0
+total 4
+-rw-r----- 1 root root    0 Nov 28 01:35 lock
+drwx------ 2 _apt root 4096 Nov 28 01:35 partial
+
+
+kubeadm=1.20.11-00
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies.
+ kubeadm : Depends: kubelet (>= 1.13.0) but it is not installable
+           Depends: kubectl (>= 1.13.0) but it is not installable
+E: Unable to correct problems, you have held broken packages.
+EXIT CODE: 100
+total 0
+
+
+kubectl=1.20.11-00
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed
+  kubectl
+0 to upgrade, 1 to newly install, 0 to remove and 0 not to upgrade.
+Need to get 0 B/7,941 kB of archives.
+After this operation, 40.2 MB of additional disk space will be used.
+Get:1 /root/backup_konvoy_v1.8.3_amd64_debs/kubectl=1.20.11-00/kubectl_1.20.11-00_amd64.deb kubectl amd64 1.20.11-00 [7,941 kB]
+Download complete and in download only mode
+EXIT CODE: 0
+total 4
+-rw-r----- 1 root root    0 Nov 28 01:35 lock
+drwx------ 2 _apt root 4096 Nov 28 01:35 partial
+
+
+kubelet=1.20.11-00
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  conntrack socat
+The following NEW packages will be installed
+  conntrack kubelet kubernetes-cni socat
+0 to upgrade, 4 to newly install, 0 to remove and 0 not to upgrade.
+Need to get 372 kB/44.3 MB of archives.
+After this operation, 187 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 conntrack amd64 1:1.4.4+snapshot20161117-6ubuntu2 [30.6 kB]
+Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 socat amd64 1.7.3.2-2ubuntu2 [342 kB]
+Get:3 /root/backup_konvoy_v1.8.3_amd64_debs/kubelet=1.20.11-00/kubernetes-cni_0.8.7-00_amd64.deb kubernetes-cni amd64 0.8.7-00 [25.0 MB]
+Get:4 /root/backup_konvoy_v1.8.3_amd64_debs/kubelet=1.20.11-00/kubelet_1.20.11-00_amd64.deb kubelet amd64 1.20.11-00 [18.9 MB]
+Fetched 372 kB in 0s (1,017 kB/s)
+Download complete and in download only mode
+EXIT CODE: 0
+total 372
+-rw-r--r-- 1 root root  30580 Apr 16  2018 conntrack_1%3a1.4.4+snapshot20161117-6ubuntu2_amd64.deb
+-rw-r----- 1 root root      0 Nov 28 01:35 lock
+drwx------ 2 _apt root   4096 Nov 28 01:35 partial
+-rw-r--r-- 1 root root 341772 Apr  4  2018 socat_1.7.3.2-2ubuntu2_amd64.deb
+
+
+libseccomp2
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be DOWNGRADED:
+  libseccomp2
+0 to upgrade, 0 to newly install, 1 to downgrade, 0 to remove and 0 not to upgrade.
+E: Packages were downgraded and -y was used without --allow-downgrades.
+EXIT CODE: 100
+total 4
+-rw-r----- 1 root root    0 Nov 28 01:35 lock
+drwx------ 2 _apt root 4096 Nov 28 01:35 partial
+
+
+nfs-common
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies.
+ nfs-common : Depends: libevent-2.0-5 (>= 2.0.10-stable) but it is not installable
+              Depends: initscripts (>= 2.88dsf-13.10ubuntu1) but it is not installable
+              Recommends: python but it is not going to be installed
+E: Unable to correct problems, you have held broken packages.
+EXIT CODE: 100
+total 0
+
+
+nvidia-container-runtime
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed
+  libnvidia-container-tools libnvidia-container1 nvidia-container-runtime
+  nvidia-container-toolkit
+0 to upgrade, 4 to newly install, 0 to remove and 0 not to upgrade.
+Need to get 0 B/1,581 kB of archives.
+After this operation, 4,825 kB of additional disk space will be used.
+Get:1 /root/backup_konvoy_v1.8.3_amd64_debs/nvidia-container-runtime/libnvidia-container1_1.5.1-1_amd64.deb libnvidia-container1 amd64 1.5.1-1 [67.5 kB]
+Get:2 /root/backup_konvoy_v1.8.3_amd64_debs/nvidia-container-runtime/libnvidia-container-tools_1.5.1-1_amd64.deb libnvidia-container-tools amd64 1.5.1-1 [21.1 kB]
+Get:3 /root/backup_konvoy_v1.8.3_amd64_debs/nvidia-container-runtime/nvidia-container-toolkit_1.5.1-1_amd64.deb nvidia-container-toolkit amd64 1.5.1-1 [716 kB]
+Get:4 /root/backup_konvoy_v1.8.3_amd64_debs/nvidia-container-runtime/nvidia-container-runtime_3.5.0-1_amd64.deb nvidia-container-runtime amd64 3.5.0-1 [776 kB]
+Download complete and in download only mode
+EXIT CODE: 0
+total 4
+-rw-r----- 1 root root    0 Nov 28 01:35 lock
+drwx------ 2 _apt root 4096 Nov 28 01:35 partial
+
+
+nvme-cli
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed
+  nvme-cli
+0 to upgrade, 1 to newly install, 0 to remove and 0 not to upgrade.
+Need to get 0 B/87.8 kB of archives.
+After this operation, 185 kB of additional disk space will be used.
+Get:1 /root/backup_konvoy_v1.8.3_amd64_debs/nvme-cli/nvme-cli_0.5-1ubuntu0.2_amd64.deb nvme-cli amd64 0.5-1ubuntu0.2 [87.8 kB]
+Download complete and in download only mode
+EXIT CODE: 0
+total 4
+-rw-r----- 1 root root    0 Nov 28 01:36 lock
+drwx------ 2 _apt root 4096 Nov 28 01:36 partial
+
+
+openssl
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  eatmydata libeatmydata1 python3-blinker python3-jinja2 python3-json-pointer
+  python3-jsonpatch python3-jsonschema python3-jwt python3-markupsafe
+  python3-oauthlib
+Use 'apt autoremove' to remove them.
+Suggested packages:
+  ca-certificates
+The following packages will be REMOVED
+  apport ca-certificates cloud-init landscape-common python3-apport
+  python3-certifi python3-httplib2 python3-requests
+  python3-requests-unixsocket snapd software-properties-common ssh-import-id
+  ubuntu-release-upgrader-core ubuntu-server update-manager-core
+  update-notifier-common
+The following packages will be DOWNGRADED:
+  openssl
+0 to upgrade, 0 to newly install, 1 to downgrade, 16 to remove and 0 not to upgrade.
+E: Packages were downgraded and -y was used without --allow-downgrades.
+EXIT CODE: 100
+total 4
+-rw-r----- 1 root root    0 Nov 28 01:36 lock
+drwx------ 2 _apt root 4096 Nov 28 01:36 partial
+
+
+xfsprogs
+=================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Suggested packages:
+  xfsdump attr quota
+The following packages will be DOWNGRADED:
+  xfsprogs
+0 to upgrade, 0 to newly install, 1 to downgrade, 0 to remove and 0 not to upgrade.
+E: Packages were downgraded and -y was used without --allow-downgrades.
+EXIT CODE: 100
+total 4
+-rw-r----- 1 root root    0 Nov 28 01:36 lock
+drwx------ 2 _apt root 4096 Nov 28 01:36 partial
