@@ -18,8 +18,12 @@ import (
 func main() {
 	f, err := os.Open("backup_konvoy_v1.8.3_amd64_debs.tar.gz")
 	must(err)
+	//noinspection GoUnhandledErrorResult
+	defer f.Close()
 	gzr, err := gzip.NewReader(f)
 	must(err)
+	//noinspection GoUnhandledErrorResult
+	defer gzr.Close()
 	fileSystem, err := tarfs.New(gzr)
 	must(err)
 	m, err := apt.NewManager()
