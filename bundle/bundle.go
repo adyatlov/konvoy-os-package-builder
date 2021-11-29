@@ -108,3 +108,7 @@ func newPackageDir(fileSystem fs.FS, packageDirPath string, manager PackageManag
 func (p *Package) Open() (fs.File, error) {
 	return p.fileSystem.Open(p.Path)
 }
+
+func (p *Package) Stat() (fs.FileInfo, error) {
+	return fs.Stat(p.fileSystem, p.Path)
+}
