@@ -69,6 +69,12 @@ func Test_parseDependencies(t *testing.T) {
 				{"kubectl", "1.13.0"},
 			},
 		},
+		{name: "Find dependencies without version",
+			args: args{singleDependency},
+			want: []bundle.NameVersion{
+				{Name: "libtomcrypt0"},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

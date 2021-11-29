@@ -75,6 +75,7 @@ func (m *Manager) CheckInstall(p *bundle.Package) (bundle.InstallResult, error) 
 		return res, nil
 	}
 	res.UnmetDependencies = parseDependencies(string(msg))
+	fmt.Println("=================================================\n", res.UnmetDependencies, string(msg))
 	return res, nil
 }
 
@@ -102,7 +103,7 @@ func (m *Manager) UpdateDependencies(p *bundle.Package) error {
 	if err = extractPackage(p, tmpDir); err != nil {
 		return fmt.Errorf("cannot extraact package %s to %s. Error: %w", p.Path, tmpDir, err)
 	}
-	cmd := exec.Command("sh", "-c", "apt-get -d install -y "+path.Join(tmpDir, "*"))
+	cmd := exec.Command("sh", "-c", "apt-get install -d -y --reinstall "+path.Join(tmpDir, "*"))
 	msg, err := cmd.CombinedOutput()
 	if err != nil {
 		if _, ok := err.(*exec.ExitError); !ok {
@@ -139,7 +140,7 @@ func (m *Manager) DownloadLatestVersion(name string) (*bundle.Package, error) {
 	if err := clearAPTCache(); err != nil {
 		return nil, err
 	}
-	cmd := exec.Command("sh", "-c", "apt-get -d install -y "+name)
+	cmd := exec.Command("sh", "-c", "apt-get install -d -y --reinstall "+name)
 	msg, err := cmd.CombinedOutput()
 	if err != nil {
 		if _, ok := err.(*exec.ExitError); !ok {
@@ -189,7 +190,7 @@ func parseResultType(msg string) bundle.InstallResultType {
 	return bundle.ResultUnknownProblem
 }
 
-var depReg = regexp.MustCompile(`Depends:\s*(\S+)\s+\(>=\s*(\d+\.\d+\.\d+)\)`)
+var depReg = regexp.MustCompile(`Depends:\s*(\S+)\s+(?:\(>=\s*(\d+\.\d+\.\d+)\))?`)
 
 func parseDependencies(msg string) []bundle.NameVersion {
 	dd := depReg.FindAllStringSubmatch(msg, -1)

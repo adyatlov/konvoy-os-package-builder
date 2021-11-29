@@ -22,7 +22,7 @@ func NewBundle(fileSystem fs.FS, manager PackageManager) (*Bundle, error) {
 		if !entry.IsDir() {
 			continue
 		}
-		p, err := newPackageDir(fileSystem, entry.Name(), manager)
+		p, err := NewPackage(fileSystem, entry.Name(), manager)
 		if err != nil {
 			return nil, fmt.Errorf("cannot create package from dir %s. Error: %w", entry.Name(), err)
 		}
@@ -72,7 +72,7 @@ func newPackageDir(fileSystem fs.FS, packageDirPath string, manager PackageManag
 		return nil, fmt.Errorf("cannot get list of files from package directory %s. Error: %w", packageDirPath, err)
 	}
 	var mainPackage *Package
-	dependencies := make([]*Package, 0, len(entries)-1)
+	dependencies := make([]*Package, 0)
 	packageDirName := path.Base(packageDirPath)
 	for _, entry := range entries {
 		if entry.IsDir() {

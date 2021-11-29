@@ -4,6 +4,7 @@ type InstallResultType int
 
 const (
 	ResultOk InstallResultType = iota
+	ResultAlreadyInstalled
 	ResultUnmetDependencies
 	ResultNewerAlreadyInstalled
 	ResultCannotFindPackage

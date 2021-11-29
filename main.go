@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"konvoy-os-package-builder/bundle"
 	"konvoy-os-package-builder/pkg/apt"
@@ -26,32 +27,17 @@ func main() {
 	must(err)
 	tree := PrintBundleTree(b)
 	fmt.Println(tree)
-
-	p := b.Packages[5]
-	r, err := m.CheckInstall(p)
-	must(err)
-	fmt.Println(r.Result, r.Package.Name, r.Package.Version, r.Package.Dependencies)
-	fmt.Println("Dependencies before update:")
-	for _, d := range p.Dependencies {
-		fmt.Println(d.Name, d.Version)
+	for i, p := range b.Packages {
+		if i != 1 {
+			continue
+		}
+		fmt.Println(PrintPackageTree(p))
+		res := bundle.CheckAndFixBundle(p, b)
+		fmt.Println(strings.Join(res.Log, "\n"))
+		if res.Success {
+			fmt.Println(PrintPackageTree(res.Package))
+		}
 	}
-	err = m.UpdateDependencies(p)
-	must(err)
-	fmt.Println("Dependencies after update:")
-	for _, d := range p.Dependencies {
-		fmt.Println(d.Name, d.Version)
-	}
-	r, err = m.CheckInstall(p)
-	must(err)
-	fmt.Println(r.Result, r.Package.Name, r.Package.Version, r.Package.Dependencies)
-
-	p, err = m.DownloadLatestVersion("nfs-common")
-	must(err)
-	fmt.Println(PrintPackageTree(p))
-
-	rt, err := m.CheckInstallLatestVersion("kubeadm")
-	must(err)
-	fmt.Println(rt)
 }
 
 func PrintBundleTree(b *bundle.Bundle) string {
