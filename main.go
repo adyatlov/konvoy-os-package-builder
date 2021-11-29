@@ -69,6 +69,8 @@ func packageToTarball(p *bundle.Package, packagePath string, tw *tar.Writer) err
 	if err != nil {
 		return fmt.Errorf("cannot open package file. Error: %w", err)
 	}
+	//noinspection GoUnhandledErrorResult
+	defer r.Close()
 	info, err := p.Stat()
 	if err != nil {
 		return fmt.Errorf("cannot stat package file. Error: %w", err)
