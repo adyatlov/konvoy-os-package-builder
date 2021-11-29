@@ -61,13 +61,14 @@ func (m *Manager) CheckInstall(p *bundle.Package) (bundle.InstallResult, error) 
 	if err = extractPackage(p, packageTmpDir); err != nil {
 		return res, fmt.Errorf("cannot copy package %s to %s. Error: %w", p.Path, packageTmpDir, err)
 	}
-	cmd := exec.Command("sh", "-c", "apt-get -s install -y "+path.Join(packageTmpDir, "*"))
+	cmd := exec.Command("sh", "-c", "apt-get install -s -y "+path.Join(packageTmpDir, "*"))
 	msg, err := cmd.CombinedOutput()
 	if err == nil {
 		res.Result = bundle.ResultOk
 		return res, nil
 	}
 	if _, ok := err.(*exec.ExitError); !ok {
+		res.Result = bundle.ResultUnknownProblem
 		return res, fmt.Errorf("cannot launch apt-get command. Error: %w", err)
 	}
 	res.Result = parseResultType(string(msg))
@@ -75,7 +76,6 @@ func (m *Manager) CheckInstall(p *bundle.Package) (bundle.InstallResult, error) 
 		return res, nil
 	}
 	res.UnmetDependencies = parseDependencies(string(msg))
-	fmt.Println("=================================================\n", res.UnmetDependencies, string(msg))
 	return res, nil
 }
 

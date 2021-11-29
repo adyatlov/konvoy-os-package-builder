@@ -3,23 +3,49 @@ package bundle
 import (
 	"fmt"
 	"strings"
+
+	"github.com/disiqueira/gotree"
 )
 
-func CheckAndFixBundle(p *Package, b *Bundle) *FixResult {
-	res := &FixResult{Log: make([]string, 0)}
-	res.AttemptsLeft = 3
+func CheckAndFixBundle(b *Bundle) {
+	initialBundleTree := printBundleTree(b, "Initial package bundle")
+	newPackages := make([]*Package, len(b.Packages))
+	var unresolvedPackages []string
+	for i, p := range b.Packages {
+		res := &FixResult{Log: make([]string, 0)}
+		res.AttemptsLeft = 3
+		res = CheckAndFixPackage(p, b, res)
+		fmt.Println(strings.Join(res.Log, "\n"))
+		fmt.Println()
+		newPackages[i] = res.Package
+		if !res.Success {
+			newPackages[i] = p
+			unresolvedPackages = append(unresolvedPackages, p.Name)
+		}
+	}
+	b.Packages = newPackages
+	resultedBundleTree := printBundleTree(b, "Fixed package bundle")
+	if len(unresolvedPackages) > 0 {
+		fmt.Printf("The following packages were not fixed:\n%s", strings.Join(unresolvedPackages, "\n"))
+	}
+	fmt.Printf("Initial bundle package tree:\n%s", initialBundleTree)
+	fmt.Println()
+	fmt.Printf("Resulted bundle package tree:\n%s", resultedBundleTree)
+}
+
+func CheckAndFixPackage(p *Package, b *Bundle, res *FixResult) *FixResult {
 	res.AddLog(fmt.Sprintf("I'm going to check if it's possible to install package \"%s\". "+
-		"I'll try to update the ackage and its dependencies if it's not.", p.Name))
+		"I'll try to update the package and its dependencies if it's not.", p.Name))
 	res, err := SimulateInstallation(p, b, res)
 	if err != nil {
 		res.AddLog(fmt.Sprintf("The following error occurred during fixing the package bundle: %v\n", err))
 		res.AddLog("Unfortunately, I couldn't make this package installable on this machine.")
 		return res
 	}
-	if res.Repeat && res.AttemptsLeft > 0 {
+	if !res.Success && res.Repeat && res.AttemptsLeft > 0 {
 		res.AttemptsLeft--
 		res.AddLog(fmt.Sprintf("Going again. Attempts left: %d.", res.AttemptsLeft))
-		return CheckAndFixBundle(p, b)
+		return CheckAndFixPackage(p, b, res)
 	}
 	if res.Success {
 		res.AddLog("SUCCESS")
@@ -135,14 +161,6 @@ func ReplaceWithLatestVersion(p *Package, b *Bundle, res *FixResult) (*FixResult
 	return res, nil
 }
 
-func printDependencyList(r InstallResult) string {
-	deps := make([]string, len(r.UnmetDependencies))
-	for i, d := range r.UnmetDependencies {
-		deps[i] = fmt.Sprintf("%s (>= %s)", d.Name, d.Version)
-	}
-	return strings.Join(deps, "\n")
-}
-
 type FixResult struct {
 	Log          []string
 	Success      bool
@@ -153,4 +171,31 @@ type FixResult struct {
 
 func (r *FixResult) AddLog(l string) {
 	r.Log = append(r.Log, l)
+}
+
+func printDependencyList(r InstallResult) string {
+	deps := make([]string, len(r.UnmetDependencies))
+	for i, d := range r.UnmetDependencies {
+		if d.Version == "" {
+			deps[i] = fmt.Sprintf("%s", d.Name)
+			continue
+		}
+		deps[i] = fmt.Sprintf("%s (>= %s)", d.Name, d.Version)
+	}
+	return strings.Join(deps, "\n")
+}
+
+func printBundleTree(b *Bundle, bundleName string) string {
+	bundleNode := gotree.New(bundleName)
+	for _, p := range b.Packages {
+		packageNode := bundleNode.Add(fmt.Sprintf("%s - v%s", p.Name, p.Version))
+		if len(p.Dependencies) == 0 {
+			packageNode.Add("No dependencies")
+			continue
+		}
+		for _, d := range p.Dependencies {
+			packageNode.Add(fmt.Sprintf("%s - v%s", d.Name, d.Version))
+		}
+	}
+	return bundleNode.Print()
 }
