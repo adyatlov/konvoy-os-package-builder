@@ -1,0 +1,166 @@
+I'm going to check if it's possible to install package "apt-transport-https". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Cannot install the package in its current state.
+The version of the package is not essential, so I'm going to replace it with the latest version.
+Check if it's possible to install the latest version of the package.
+It is possible to install the latest version of the package. I'm going to download the package and its dependencies.
+SUCCESS
+
+I'm going to check if it's possible to install package "chrony". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Cannot install the package in its current state. Reason: the following dependencies were not met:
+libtomcrypt0
+The version of the package is not essential, so I'm going to replace it with the latest version.
+Check if it's possible to install the latest version of the package.
+It is possible to install the latest version of the package. I'm going to download the package and its dependencies.
+SUCCESS
+
+I'm going to check if it's possible to install package "containerd.io". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Simulated installation was successful. I'm going to download dependencies.
+Package dependencies successfully updated.
+SUCCESS
+
+I'm going to check if it's possible to install package "kubeadm". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Cannot install the package in its current state. Reason: the following dependencies were not met:
+kubelet (>= 1.13.0)
+kubectl (>= 1.13.0)
+It is important to install this exact version of the package. I'm going to search for the dependencies in the package bundle.
+Package kubelet found and added to the dependencies.
+Package kubectl found and added to the dependencies.
+All the required packages were found and added to the package dependencies. I'm going to check once again if it's possible to install the package.
+Going again. Attempts left: 2.
+I'm going to check if it's possible to install package "kubeadm". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Simulated installation was successful. I'm going to download dependencies.
+Package dependencies successfully updated.
+SUCCESS
+
+I'm going to check if it's possible to install package "kubectl". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Simulated installation was successful. I'm going to download dependencies.
+Package dependencies successfully updated.
+SUCCESS
+
+I'm going to check if it's possible to install package "kubelet". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Simulated installation was successful. I'm going to download dependencies.
+Package dependencies successfully updated.
+SUCCESS
+
+I'm going to check if it's possible to install package "libseccomp2". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Cannot install the package in its current state. Reason: a newer version of the package is already installed.
+The version of the package is not essential, so I'm going to replace it with the latest version.
+Check if it's possible to install the latest version of the package.
+It is possible to install the latest version of the package. I'm going to download the package and its dependencies.
+SUCCESS
+
+I'm going to check if it's possible to install package "nfs-common". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Cannot install the package in its current state. Reason: the following dependencies were not met:
+libevent-2.0-5
+initscripts
+The version of the package is not essential, so I'm going to replace it with the latest version.
+Check if it's possible to install the latest version of the package.
+It is possible to install the latest version of the package. I'm going to download the package and its dependencies.
+SUCCESS
+
+I'm going to check if it's possible to install package "nvidia-container-runtime". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Simulated installation was successful. I'm going to download dependencies.
+Package dependencies successfully updated.
+SUCCESS
+
+I'm going to check if it's possible to install package "nvme-cli". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Simulated installation was successful. I'm going to download dependencies.
+Package dependencies successfully updated.
+SUCCESS
+
+I'm going to check if it's possible to install package "openssl". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Cannot install the package in its current state. Reason: a newer version of the package is already installed.
+The version of the package is not essential, so I'm going to replace it with the latest version.
+Check if it's possible to install the latest version of the package.
+It is possible to install the latest version of the package. I'm going to download the package and its dependencies.
+SUCCESS
+
+I'm going to check if it's possible to install package "xfsprogs". I'll try to update the package and its dependencies if it's not.
+I'm going to simulate installation of the package.
+Cannot install the package in its current state. Reason: a newer version of the package is already installed.
+The version of the package is not essential, so I'm going to replace it with the latest version.
+Check if it's possible to install the latest version of the package.
+It is possible to install the latest version of the package. I'm going to download the package and its dependencies.
+SUCCESS
+
+Initial bundle package tree:
+Initial package bundle
+└── apt-transport-https - v1.2.35
+│   ├── No dependencies
+└── chrony - v2.1.1-1ubuntu0.1
+│   ├── No dependencies
+└── containerd.io - v1.4.7-1
+│   ├── No dependencies
+└── kubeadm - v1.20.11-00
+│   ├── cri-tools - v1.13.0-01
+│   ├── kubernetes-cni - v0.8.7-00
+└── kubectl - v1.20.11-00
+│   ├── No dependencies
+└── kubelet - v1.20.11-00
+│   ├── kubernetes-cni - v0.8.7-00
+└── libseccomp2 - v2.5.1-1ubuntu1~16.04.1
+│   ├── No dependencies
+└── nfs-common - v1%3a1.2.8-9ubuntu12.3
+│   ├── No dependencies
+└── nvidia-container-runtime - v3.5.0-1
+│   ├── libnvidia-container-tools - v1.5.1-1
+│   ├── libnvidia-container1 - v1.5.1-1
+│   ├── nvidia-container-toolkit - v1.5.1-1
+└── nvme-cli - v0.5-1ubuntu0.2
+│   ├── No dependencies
+└── openssl - v1.0.2g-1ubuntu4.20
+│   ├── No dependencies
+└── xfsprogs - v4.3.0+nmu1ubuntu1.1
+    └── No dependencies
+
+Resulted bundle package tree:
+Fixed package bundle
+└── apt-transport-https - v1.6.14
+│   ├── No dependencies
+└── chrony - v3.2-4ubuntu4.5
+│   ├── libnspr4 - v2%3a4.18-1ubuntu1
+│   ├── libnss3 - v2%3a3.35-2ubuntu2.12
+└── containerd.io - v1.4.7-1
+│   ├── No dependencies
+└── kubeadm - v1.20.11-00
+│   ├── cri-tools - v1.13.0-01
+│   ├── kubernetes-cni - v0.8.7-00
+│   ├── kubelet - v1.20.11-00
+│   ├── kubectl - v1.20.11-00
+│   ├── conntrack - v1%3a1.4.4+snapshot20161117-6ubuntu2
+│   ├── socat - v1.7.3.2-2ubuntu2
+└── kubectl - v1.20.11-00
+│   ├── No dependencies
+└── kubelet - v1.20.11-00
+│   ├── kubernetes-cni - v0.8.7-00
+│   ├── conntrack - v1%3a1.4.4+snapshot20161117-6ubuntu2
+│   ├── socat - v1.7.3.2-2ubuntu2
+└── libseccomp2 - v2.5.1-1ubuntu1~18.04.1
+│   ├── No dependencies
+└── nfs-common - v1%3a1.3.4-2.1ubuntu5.5
+│   ├── keyutils - v1.5.9-9.2ubuntu2
+│   ├── libnfsidmap2 - v0.25-5.1
+│   ├── libtirpc1 - v0.2.5-1.2ubuntu0.1
+│   ├── rpcbind - v0.2.3-0.6ubuntu0.18.04.4
+└── nvidia-container-runtime - v3.5.0-1
+│   ├── libnvidia-container-tools - v1.5.1-1
+│   ├── libnvidia-container1 - v1.5.1-1
+│   ├── nvidia-container-toolkit - v1.5.1-1
+└── nvme-cli - v0.5-1ubuntu0.2
+│   ├── No dependencies
+└── openssl - v1.1.1-1ubuntu2.1~18.04.13
+│   ├── No dependencies
+└── xfsprogs - v4.9.0+nmu1ubuntu2
+    └── No dependencies
