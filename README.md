@@ -1,6 +1,7 @@
 # konvoy-os-package-builder
-CMD tool that composes an OS packages bundle for air-gapped Konvoy installations
+CMD tool that composes an OS packages bundle for air-gapped Konvoy installations. 
 
+## How to use
 1. Build the tool:
 
     ```
@@ -13,3 +14,6 @@ CMD tool that composes an OS packages bundle for air-gapped Konvoy installations
 5. Launch the tool: `./konvoy-os-package-builder`.
 6. If the command runs successfully it creates the new `konvoy_v1.8.3_amd64_debs.tar.gz` file.
 7. In the directory of the Konvoy distributive replace the old OS package bundle `konvoy_v1.8.3_amd64_debs.tar.gz` with the new one.
+
+## Limitations
+At this moment, the tool supports APT (`.deb`) packages only.
