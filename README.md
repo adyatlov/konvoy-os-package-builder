@@ -1,5 +1,5 @@
 # konvoy-os-package-builder
-CMD tool that composes an OS packages bundle for air-gapped Konvoy installations. 
+CMD tool that composes an OS packages bundle for air-gapped Konvoy installations
 
 ## How to use
 1. Build the tool:
